@@ -2,7 +2,7 @@
 import { Menu, X } from "lucide-react";
 import { cn } from "@/utils/cn";
 import { useState, useEffect} from "react";
-import { motion, AnimatePresence, useScroll } from "framer-motion";
+import { motion, AnimatePresence} from "framer-motion";
 import useIsMobile from "@/hooks/useIsMobile";
 import useScrollDirection from "@/hooks/useScrollDirection";
 
