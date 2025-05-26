@@ -13,7 +13,7 @@ const initalViewState = {
 }
 
 const WorldMap = () => { 
-
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [mapControl, setMapControl] = useState({
         scrollZoom: false, // disable zooming map with mouse wheel
         boxZoom: false, // disable zooming map with box selection
