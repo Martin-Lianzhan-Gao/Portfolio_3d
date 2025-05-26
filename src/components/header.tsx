@@ -1,12 +1,11 @@
 'use client'
 import { Menu, X } from "lucide-react";
-import { cn } from "@/utils/cn";
-import { useState, useEffect} from "react";
-import { motion, AnimatePresence} from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import useIsMobile from "@/hooks/useIsMobile";
 import useScrollDirection from "@/hooks/useScrollDirection";
 
-const AnimateListItem = ({ text, index} : {text: string, index: number}) => { 
+const AnimateListItem = ({ text, index }: { text: string, index: number }) => {
     return (
         <motion.li
             initial={{ y: -20, opacity: 0 }}
@@ -19,10 +18,10 @@ const AnimateListItem = ({ text, index} : {text: string, index: number}) => {
             }}
             className="py-2 md:py-0"
         >
-            { text }
+            {text}
         </motion.li>
     )
-} 
+}
 
 const Header = () => {
     // get screen type
@@ -41,14 +40,14 @@ const Header = () => {
     const showHeader = isMobile ? isOpen : isScrollUp;
 
     useEffect(() => {
-        
+
         if (scrollDirection === null) {
             setIsScrolling(false);
-        } else { 
+        } else {
             setIsScrolling(true);
         }
 
-        if (isScrolling) { 
+        if (isScrolling) {
             if (scrollDirection === "up") {
                 setIsScrollUp(true);
             }
@@ -56,19 +55,19 @@ const Header = () => {
                 setIsScrollUp(false);
             }
         }
-        
+
     }, [scrollDirection, isScrolling]);
 
     return (
-        <div className="fixed w-full backdrop-blur-xl z-10 text-gray-50">
-            <div>
-                <button className="ml-4 my-2 flex flex-row px-3 py-2 rounded-3xl md:hidden" onClick={() => setIsOpen(!isOpen)}>
-                    { isOpen ? <X /> : <Menu /> }
-                    Menu
-                </button>
+        <div className="fixed w-full backdrop-blur-xl z-10 text-gray-300 border-amber-50">
+            <button className="ml-4 my-2 flex flex-row px-3 py-2 rounded-3xl md:hidden" onClick={() => setIsOpen(!isOpen)}>
+                {isOpen ? <X /> : <Menu />}
+                Menu
+            </button>
+            <div className="flex flex-row justify-center w-full">
                 <AnimatePresence>
                     {showHeader && (
-                        <motion.ul className={cn("flex my-2 mx-4 flex-col items-center h-1/2", "md:flex md:flex-row md:justify-between md:my-4")}>
+                        <motion.ul className="flex my-2 flex-col w-full items-center md:mx-4 md:flex md:flex-row md:justify-between md:my-4 md:max-w-7xl md:min-w-3xl">
                             {Array.from({ length: 6 }).map((_, index) => (
                                 <AnimateListItem key={index} index={index} text={itemTexts[index]} />
                             ))}
