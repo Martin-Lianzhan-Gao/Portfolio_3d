@@ -60,7 +60,7 @@ const Header = () => {
     }, [scrollDirection, isScrolling]);
 
     return (
-        <div className="fixed w-full backdrop-blur-xl">
+        <div className="fixed w-full backdrop-blur-xl z-10 text-gray-50">
             <div>
                 <button className="ml-4 my-2 flex flex-row px-3 py-2 rounded-3xl md:hidden" onClick={() => setIsOpen(!isOpen)}>
                     { isOpen ? <X /> : <Menu /> }
