@@ -2,7 +2,6 @@
 import { Map, Marker } from "@vis.gl/react-maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { MapPin } from "lucide-react";
-import { useState } from "react";
 
 const initalViewState = {
     latitude: -27.470125,
@@ -13,21 +12,21 @@ const initalViewState = {
 }
 
 const WorldMap = () => { 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [mapControl, setMapControl] = useState({
+    
+    const mapControl = {
         scrollZoom: false, // disable zooming map with mouse wheel
         boxZoom: false, // disable zooming map with box selection
         dragRotate: false, // disable rotating map with mouse drag
-        dragPan: true, // enable dragging map with mouse
+        dragPan: false, // enable dragging map with mouse
         keyboard: true, // enable keyboard navigation
         doubleClickZoom: false, // disable zooming map with double click
-        touchZoomRotate: true, // enable zooming and rotating map with touch gestures
+        touchZoomRotate: false, // enable zooming and rotating map with touch gestures
         touchPitch: false, // disable tilting map with touch gestures
         minZoom: 5,
         maxZoom: 15,
         minPitch: 0,
         maxPitch: 85
-    })
+    }
 
     return (
         <Map
@@ -41,7 +40,7 @@ const WorldMap = () => {
                 latitude={-27.470125}
                 anchor="bottom"
             >
-                <MapPin className="text-red-500 mb-4" size={24} />
+                <MapPin className="mb-4" fill="red" size={24} />
             </Marker>
 
         </Map>
