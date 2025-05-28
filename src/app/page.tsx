@@ -2,7 +2,7 @@ import WorldMap from "@/components/world-map";
 
 export default function Home() {
     return (
-        <div>
+        <div className="overflow-x-hidden">
             <div className="w-full h-screen">
                 <WorldMap />
             </div>
