@@ -1,6 +1,6 @@
 'use client'
 import { Menu, X } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import useIsMobile from "@/hooks/useIsMobile";
 import useScrollDirection from "@/hooks/useScrollDirection";
