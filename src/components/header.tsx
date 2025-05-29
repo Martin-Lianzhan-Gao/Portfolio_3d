@@ -81,8 +81,8 @@ const Header = () => {
     }, [scrollDirection, isScrolling]);
 
     return (
-        <div className="fixed z-10 w-full">
-            <div className="backdrop-blur-xl py-2 md:hidden">
+        <div className="fixed z-10 w-full backdrop-blur-xl">
+            <div className=" py-2 md:hidden">
                 <button className="ml-4 flex flex-row px-3 py-2 rounded-3xl text-gray-100 md:hidden" onClick={() => setIsOpen(!isOpen)}>
                     {isOpen ? <X /> : <Menu />}
                     Menu
@@ -91,7 +91,7 @@ const Header = () => {
 
             <AnimatePresence>
                 {showHeader && (
-                    <motion.div className="w-full backdrop-blur-xl flex flex-row justify-center"
+                    <motion.div className="w-full flex flex-row justify-center"
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
