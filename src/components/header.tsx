@@ -18,14 +18,14 @@ const AnimateListItem = ({ text, index, isSelected, textSetter }: { text: string
                 duration: 0.3,
                 ease: "easeInOut",
             }}
-            className={cn("py-2 text-gray-300 hover:text-gray-100 md:py-0", isSelected ? "text-gray-100" : "text-gray-300" , "cursor-pointer ")}
+            className={cn("py-4 text-gray-300 hover:text-gray-100 md:py-0", isSelected ? "text-gray-100" : "text-gray-300" , "cursor-pointer ")}
             onClick={() => textSetter(text)}
         >
             {text}
             <div className="w-full flex justify-center h-[2px]">
                 <AnimatePresence>
                     {isSelected && (<motion.div
-                        className="w-[12px] h-[2px] rounded-2xl bg-gray-100"
+                        className="w-[12px] h-[2px] rounded-2xl bg-gray-200"
                         initial={{ width: 0, opacity: 0 }}
                         animate={{ width: '12px', opacity: 1 }}
                         exit={{ width: 0, opacity: 0 }}
@@ -102,7 +102,7 @@ const Header = () => {
                         }}
                         layout
                     >
-                        <div className="w-full md:py-4 md:max-w-7xl md:min-w-3xl md:px-4">
+                        <div className="w-full py-2 md:py-4 md:max-w-7xl md:min-w-3xl md:px-4">
                             <motion.ul
                                 className="flex flex-col items-center md:flex md:flex-row md:justify-around"
                             >
