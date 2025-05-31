@@ -2,6 +2,7 @@
 import { Map, Marker } from "@vis.gl/react-maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { MapPin } from "lucide-react";
+import { motion } from "framer-motion";
 
 const initalViewState = {
     latitude: -27.470125,
@@ -9,6 +10,23 @@ const initalViewState = {
     zoom: 11,
     bearing: 0,
     pitch: 50
+}
+
+const DynamicMapPin = () => {
+    return (
+        <motion.div
+            animate={{ y: [0, -20, 0]}}
+            transition={{
+                duration: 2,
+                ease: "easeInOut",
+                repeat: Infinity,
+                repeatType: "loop",
+                repeatDelay: 0.1
+            }}
+        >
+            <MapPin className="mb-4" fill="#EF695D" size={24} />
+        </motion.div>
+    )
 }
 
 const WorldMap = () => { 
@@ -30,6 +48,7 @@ const WorldMap = () => {
 
     return (
         <Map
+            padding={{left:300, top: 100}}
             initialViewState={initalViewState}
             style={{ width: '100%', height: '100%' }}
             {...mapControl}
@@ -39,10 +58,9 @@ const WorldMap = () => {
                 longitude={153.021072}
                 latitude={-27.470125}
                 anchor="bottom"
-            >
-                <MapPin className="mb-4" fill="red" size={24} />
+            >   
+                <DynamicMapPin />
             </Marker>
-
         </Map>
     )
 }
