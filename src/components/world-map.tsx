@@ -15,16 +15,16 @@ const initalViewState = {
 const DynamicMapPin = () => {
     return (
         <motion.div
-            animate={{ y: [0, -20, 0]}}
+            animate={{ y: [0, -15, 0]}}
             transition={{
-                duration: 2,
+                duration: 1.5,
                 ease: "easeInOut",
                 repeat: Infinity,
                 repeatType: "loop",
                 repeatDelay: 0.1
             }}
         >
-            <MapPin className="mb-4" fill="#EF695D" size={24} />
+            <MapPin className="mb-4" fill="#DB3739" size={24} />
         </motion.div>
     )
 }
@@ -48,6 +48,7 @@ const WorldMap = () => {
 
     return (
         <Map
+            attributionControl={false}
             padding={{left:300, top: 100}}
             initialViewState={initalViewState}
             style={{ width: '100%', height: '100%' }}
