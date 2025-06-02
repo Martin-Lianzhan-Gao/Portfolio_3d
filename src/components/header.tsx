@@ -54,7 +54,7 @@ const Header = () => {
     // state represents whether scolling
     const [isScrolling, setIsScrolling] = useState(false);
     // header / menu items
-    const itemTexts = ['Home', 'About', 'Services', 'Portfolio', 'Blog', 'Contact'];
+    const itemTexts = ['Home', 'Experience', 'Project', 'Skills', 'Contact'];
     // determine control state of the header based on the screen type
     const showHeader = isMobile ? isOpen : isScrollUp;
 
