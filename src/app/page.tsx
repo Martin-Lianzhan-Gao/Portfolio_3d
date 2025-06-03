@@ -1,11 +1,10 @@
-import WorldMap from "@/components/world-map";
+import Intro from "@/components/intro";
+
 
 export default function Home() {
     return (
         <div className="overflow-x-hidden">
-            <div className="w-full h-screen">
-                <WorldMap />
-            </div>
+            <Intro />
             
             <div className="flex w-full h-screen flex-col items-center justify-center p-24">
                 First Page
