@@ -1,21 +1,15 @@
 'use client';
-import { Map, Marker } from "@vis.gl/react-maplibre";
+import { Map, Marker, MapRef } from "@vis.gl/react-maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { MapPin } from "lucide-react";
 import { motion } from "framer-motion";
-
-const initalViewState = {
-    latitude: -27.470125,
-    longitude: 153.021072,
-    zoom: 11,
-    bearing: 0,
-    pitch: 50
-}
+import { forwardRef, memo } from "react";
+import { brisbane, zhengzhou } from "@/data/cities";
 
 const DynamicMapPin = () => {
     return (
         <motion.div
-            animate={{ y: [0, -15, 0]}}
+            animate={{ y: [0, -15, 0] }}
             transition={{
                 duration: 1.5,
                 ease: "easeInOut",
@@ -29,8 +23,16 @@ const DynamicMapPin = () => {
     )
 }
 
-const WorldMap = () => { 
-    
+const WorldMap = forwardRef<MapRef, {}>(({}, ref) => {
+
+    const viewState = {
+        latitude: brisbane.latitude,
+        longitude: brisbane.longitude,
+        zoom: 11,
+        bearing: 0,
+        pitch: 50
+    }
+
     const mapControl = {
         scrollZoom: false, // disable zooming map with mouse wheel
         boxZoom: false, // disable zooming map with box selection
@@ -47,23 +49,35 @@ const WorldMap = () => {
     }
 
     return (
+
         <Map
+            ref={ref}
             attributionControl={false}
-            padding={{left:300, top: 100}}
-            initialViewState={initalViewState}
+            padding={{ left: 300, top: 100 }}
             style={{ width: '100%', height: '100%' }}
+            initialViewState={viewState}
             {...mapControl}
             mapStyle="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json"
+        // mapStyle='https://basemaps.cartocdn.com/gl/positron-gl-style/style.json'
         >
             <Marker
-                longitude={153.021072}
-                latitude={-27.470125}
+                longitude={brisbane.longitude}
+                latitude={brisbane.latitude}
                 anchor="bottom"
-            >   
+            >
+                <DynamicMapPin />
+            </Marker>
+            <Marker
+                longitude={zhengzhou.longitude}
+                latitude={zhengzhou.latitude}
+                anchor="bottom"
+            >
                 <DynamicMapPin />
             </Marker>
         </Map>
-    )
-}
 
-export default WorldMap;
+
+    )
+})
+
+export default memo(WorldMap);
