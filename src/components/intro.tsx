@@ -63,7 +63,7 @@ const Intro = () => {
             </div>
             <AnimatePresence>
                 {!isChangingCity && <motion.div
-                    className="absolute backdrop-blur-sm z-2 border border-white/20 rounded-3xl w-auto p-4 ml-4 mr-4 top-1/10 md:p-8 md:top-1/5 md:left-22 md:w-[768px]"
+                    className="absolute backdrop-blur-sm z-2 border border-white/20 rounded-3xl w-auto p-4 ml-4 mr-4 top-1/10 md:ml-0 md:mr-0 md:p-8 md:top-1/5 md:left-22 md:w-[768px]"
                     variants={containerVariants}
                     initial="initial"
                     animate="animate"
@@ -91,7 +91,7 @@ const Intro = () => {
                         setIsCurrentLocation={setIsCurrentLocation}
                     />
                     <motion.button
-                        className="flex flex-row items-center justify-center px-3 py-2 mt-8 border border-white/20 bg-gray-800/30 rounded-3xl backdrop-blur-xl hover:bg-gray-700/40 transition-colors duration-200 text-sm md:text-xl"
+                        className="flex flex-row items-center justify-center px-3 py-2 mt-8 border border-white/20 bg-gray-800/30 rounded-3xl backdrop-blur-xl hover:bg-gray-700/40 active:bg-gray-700/40 transition-colors duration-200 text-sm md:text-xl"
                     >
                         <Compass />
                         <span className="ml-2">Explore More</span>
