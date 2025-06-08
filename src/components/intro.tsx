@@ -63,25 +63,25 @@ const Intro = () => {
             </div>
             <AnimatePresence>
                 {!isChangingCity && <motion.div
-                    className="absolute backdrop-blur-sm z-2 border border-white/20 rounded-3xl w-full p-2 top-1/10 md:p-8 md:top-1/5 md:left-22 md:w-[768px]"
+                    className="absolute backdrop-blur-sm z-2 border border-white/20 rounded-3xl w-auto p-4 ml-4 mr-4 top-1/10 md:p-8 md:top-1/5 md:left-22 md:w-[768px]"
                     variants={containerVariants}
                     initial="initial"
                     animate="animate"
                     exit="exit"
                 >
                     <motion.h1
-                        className="text-7xl font-bold"
+                        className="font-bold text-3xl md:text-7xl"
                     >
                         HI, I&apos;M LIANZHAN GAO (MARTIN)
                     </motion.h1>
                     <motion.h2
-                        className="text-2xl font-medium pt-4"
+                        className="font-medium pt-4 text-xl md:text-2xl"
                     >
                         - 1/1 Developer<br />
                         - 1/2 Designer
                     </motion.h2>
                     <motion.p
-                        className="text-xl pt-4"
+                        className="pt-4 text-sm md:text-xl"
                     >
                         A motivated and results-driven Computer Science graduate with over a year of hands-on experience in full-stack development and cloud development. And also a fast learner with a practical and exploratory spirit.
                     </motion.p>
@@ -91,7 +91,7 @@ const Intro = () => {
                         setIsCurrentLocation={setIsCurrentLocation}
                     />
                     <motion.button
-                        className="flex flex-row items-center justify-center px-3 py-2 mt-8 border border-white/20 bg-gray-800/30 rounded-3xl backdrop-blur-xl hover:bg-gray-700/40 transition-colors duration-200"
+                        className="flex flex-row items-center justify-center px-3 py-2 mt-8 border border-white/20 bg-gray-800/30 rounded-3xl backdrop-blur-xl hover:bg-gray-700/40 transition-colors duration-200 text-sm md:text-xl"
                     >
                         <Compass />
                         <span className="ml-2">Explore More</span>
