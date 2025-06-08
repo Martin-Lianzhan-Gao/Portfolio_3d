@@ -23,7 +23,7 @@ const DynamicMapPin = () => {
     )
 }
 
-const WorldMap = forwardRef<MapRef, {}>(({}, ref) => {
+const WorldMap = forwardRef<MapRef, object>(({}, ref) => {
 
     const viewState = {
         latitude: brisbane.latitude,
@@ -79,5 +79,7 @@ const WorldMap = forwardRef<MapRef, {}>(({}, ref) => {
 
     )
 })
+
+WorldMap.displayName = "WorldMap";
 
 export default memo(WorldMap);
