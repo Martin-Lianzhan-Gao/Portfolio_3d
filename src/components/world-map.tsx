@@ -58,7 +58,6 @@ const WorldMap = forwardRef<MapRef, object>(({}, ref) => {
             initialViewState={viewState}
             {...mapControl}
             mapStyle="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json"
-        // mapStyle='https://basemaps.cartocdn.com/gl/positron-gl-style/style.json'
         >
             <Marker
                 longitude={brisbane.longitude}

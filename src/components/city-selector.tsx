@@ -15,7 +15,7 @@ const CitySelector = ({ onSelectCity, isCurrentLocation, setIsCurrentLocation }:
     return (
 
         <motion.div className='pt-4'>
-            <motion.ul className="text-sm text-gray-400 md:text-xl ">
+            <motion.ul className="text-sm text-gray-400 md:text-xl 2xl:text-2xl">
                 <motion.li
                     onClick={() => {
                         setIsCurrentLocation(true);
