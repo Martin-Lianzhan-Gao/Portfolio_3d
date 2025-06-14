@@ -105,11 +105,11 @@ const Intro = () => {
                         >
                             A motivated and results-driven Computer Science graduate with over a year of hands-on experience in full-stack development and cloud development. And also a fast learner with a practical and exploratory spirit.
                         </motion.p>
-                        <CitySwitcher 
+                        {/* <CitySwitcher 
                             onSelectCity={onChangeCity}
                             isCurrentLocation={isCurrentLocation}
                             setIsCurrentLocation={setIsCurrentLocation} 
-                        />
+                        /> */}
                     </motion.div>}
                 </AnimatePresence>
             </div>
