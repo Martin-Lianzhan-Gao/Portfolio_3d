@@ -15,7 +15,7 @@ const CitySwitcher = ({ onSelectCity, isCurrentLocation, setIsCurrentLocation }:
     return (
 
         <motion.div
-            className='mt-4 text-sm text-gray-400 flex flex-row md:text-xl 2xl:text-2xl'
+            className='mt-4 text-sm text-gray-400 flex flex-row 2xl:text-xl'
         >
             <motion.div
                 onClick={() => {
