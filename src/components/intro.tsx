@@ -82,7 +82,7 @@ const Intro = () => {
             <div className="absolute w-full h-full flex flex-col justify-end items-center border border-white/20 z-2 md:w-1/2 md:justify-center">
                 <AnimatePresence>
                     {!isChangingCity && <motion.div
-                        className="backdrop-blur-xl border bg-black-800/30 border-white/20 rounded-3xl p-4 ml-4 mr-4 mb-20 h-auto w-auto md:ml-10 md:mr-10 md:max-w-[728px]"
+                        className="backdrop-blur-xl border bg-black-800/30 border-white/20 rounded-3xl p-4 ml-4 mr-4 mb-40 h-auto w-auto md:ml-10 md:mr-10 md:max-w-[728px] md:mb-0"
                         variants={containerVariants}
                         initial="initial"
                         animate="animate"
