@@ -1,10 +1,8 @@
 'use client';
 import WorldMap from "./world-map";
-import { Compass } from "lucide-react";
-import CitySelector from "./city-switcher";
 import { MapRef } from "@vis.gl/react-maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import CitySwitcher from "./city-switcher";
 
@@ -38,7 +36,7 @@ const Intro = () => {
     useEffect(() => { 
         if (!sectionRef.current || !cardRef.current) return;
 
-        let sectionHeight = sectionRef.current.offsetHeight;
+        const sectionHeight = sectionRef.current.offsetHeight;
         const cardHeight = cardRef.current.offsetHeight;
 
         if (cardHeight > sectionHeight) {
