@@ -22,7 +22,7 @@ const CitySwitcher = ({ onSelectCity, isCurrentLocation, setIsCurrentLocation }:
                     setIsCurrentLocation(true);
                     onSelectCity({ longitude: brisbane.longitude, latitude: brisbane.latitude });
                 }}
-                className={cn(isCurrentLocation ? "text-gray-200 bg-gray-700/40 border border-white/20" : "cursor-pointer hover:text-gray-200 hover:bg-gray-700/40 active:bg-gray-700/40 active:text-gray-200 transition-colors duration-200", "px-4 py-2 rounded-2xl  backdrop-blur-2xl mr-1")}
+                className={cn(isCurrentLocation ? "text-gray-200 bg-gray-700/40 border border-white/20" : "cursor-pointer hover:text-gray-200 hover:bg-gray-700/40 active:bg-gray-700/40 active:text-gray-200 ", "px-4 py-2 rounded-2xl  backdrop-blur-2xl mr-1 transition-colors duration-200")}
             >
                 Location
             </motion.div>
@@ -31,7 +31,7 @@ const CitySwitcher = ({ onSelectCity, isCurrentLocation, setIsCurrentLocation }:
                     setIsCurrentLocation(false);
                     onSelectCity({ longitude: zhengzhou.longitude, latitude: zhengzhou.latitude });
                 }}
-                className={cn(!isCurrentLocation ? "text-gray-200 bg-gray-700/40 border border-white/20" : "cursor-pointer hover:text-gray-200 hover:bg-gray-700/40 active:bg-gray-700/40 active:text-gray-200 transition-colors duration-200", "px-4 py-2 rounded-2xl  backdrop-blur-2xl ml-1")}
+                className={cn(!isCurrentLocation ? "text-gray-200 bg-gray-700/40 border border-white/20" : "cursor-pointer hover:text-gray-200 hover:bg-gray-700/40 active:bg-gray-700/40 active:text-gray-200", "px-4 py-2 rounded-2xl backdrop-blur-2xl ml-1 transition-colors duration-200")}
             >
                 Hometown
             </motion.div>
