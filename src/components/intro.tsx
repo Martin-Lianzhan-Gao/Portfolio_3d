@@ -1,15 +1,21 @@
 'use client';
 import WorldMap from "./world-map";
 import { Compass } from "lucide-react";
-import CitySelector from "./city-selector";
+import CitySelector from "./city-switcher";
 import { MapRef } from "@vis.gl/react-maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
+import CitySwitcher from "./city-switcher";
+
 
 const Intro = () => {
 
     const mapRef = useRef<MapRef>(null);
+
+    const cardRef = useRef<HTMLDivElement>(null);
+
+    const sectionRef = useRef<HTMLDivElement>(null);
 
     const [isChangingCity, setIsChangingCity] = useState(false);
 
@@ -25,9 +31,20 @@ const Intro = () => {
         setIsChangingCity(true);
 
         setTimeout(() => {
-            setIsChangingCity(false);
+            setIsChangingCity(false); 
         }, 3500);
     }
+
+    useEffect(() => { 
+        if (!sectionRef.current || !cardRef.current) return;
+
+        let sectionHeight = sectionRef.current.offsetHeight;
+        const cardHeight = cardRef.current.offsetHeight;
+
+        if (cardHeight > sectionHeight) {
+            sectionRef.current.style.height = `${cardHeight + 200}px`;
+        }
+    }, [])
 
     // define the animations for the container
     const containerVariants: Variants = {
@@ -57,46 +74,44 @@ const Intro = () => {
     }
 
     return (
-        <div className="relative w-full h-screen font-roboto-mono text-gray-200 flex flex-col">
+        <div
+            className="relative w-full h-screen min-h-screen max-h-[200vh] font-roboto-mono text-gray-200 flex flex-col"
+            ref={sectionRef}
+        >
             <div className="w-full h-full">
                 <WorldMap ref={mapRef} />
             </div>
-            <div className="w-full flex flex-row justify-start absolute z-2 ">
+            <div className="absolute w-full h-full flex flex-col justify-end items-center border border-white/20 z-2 md:w-1/2 md:justify-center">
                 <AnimatePresence>
                     {!isChangingCity && <motion.div
-                        className="backdrop-blur-sm border border-white/20 rounded-3xl w-auto p-4 mt-28 ml-4 mr-4 md:p-8 md:max-w-[768px] lg:ml-16 lg:mt-32 2xl:ml-40 2xl:mt-42"
+                        className="backdrop-blur-xl border bg-black-800/30 border-white/20 rounded-3xl p-4 ml-4 mr-4 mb-20 h-auto w-auto md:ml-10 md:mr-10 md:max-w-[728px]"
                         variants={containerVariants}
                         initial="initial"
                         animate="animate"
                         exit="exit"
+                        ref={cardRef}
                     >
                         <motion.h1
-                            className="font-bold text-3xl md:text-7xl 2xl:text-8xl"
+                            className="font-bold text-3xl md:text-4xl 2xl:text-5xl"
                         >
                             HI, I&apos;M LIANZHAN GAO (MARTIN)
                         </motion.h1>
                         <motion.h2
-                            className="font-medium pt-4 text-xl md:text-2xl 2xl:text-3xl"
+                            className="font-medium mt-1 text-xl md:text-2xl 2xl:text-3xl"
                         >
                             - 1/1 Developer<br />
                             - 1/2 Designer
                         </motion.h2>
                         <motion.p
-                            className="pt-4 text-sm md:text-xl 2xl:text-2xl"
+                            className="mt-2 text-sm md:text-xl 2xl:text-2xl"
                         >
                             A motivated and results-driven Computer Science graduate with over a year of hands-on experience in full-stack development and cloud development. And also a fast learner with a practical and exploratory spirit.
                         </motion.p>
-                        <CitySelector
+                        <CitySwitcher 
                             onSelectCity={onChangeCity}
                             isCurrentLocation={isCurrentLocation}
-                            setIsCurrentLocation={setIsCurrentLocation}
+                            setIsCurrentLocation={setIsCurrentLocation} 
                         />
-                        <motion.button
-                            className="flex flex-row items-center justify-center px-3 py-2 mt-8 border border-white/20 bg-gray-800/30 rounded-3xl backdrop-blur-xl hover:bg-gray-700/40 active:bg-gray-700/40 transition-colors duration-200 text-sm md:text-xl 2xl:text-2xl"
-                        >
-                            <Compass />
-                            <span className="ml-2">Explore More</span>
-                        </motion.button>
                     </motion.div>}
                 </AnimatePresence>
             </div>
