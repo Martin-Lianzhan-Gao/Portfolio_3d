@@ -53,7 +53,7 @@ const WorldMap = forwardRef<MapRef, object>(({}, ref) => {
         <Map
             ref={ref}
             attributionControl={false}
-            padding={{ left: 300, top: 100 }}
+            padding={{ top: 550 }}
             style={{ width: '100%', height: '100%' }}
             initialViewState={viewState}
             {...mapControl}
