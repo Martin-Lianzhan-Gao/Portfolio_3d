@@ -17,21 +17,21 @@ const Intro = () => {
 
     const [isChangingCity, setIsChangingCity] = useState(false);
 
-    const [isCurrentLocation, setIsCurrentLocation] = useState(true);
+    // const [isCurrentLocation, setIsCurrentLocation] = useState(true);
 
-    const onChangeCity = ({ longitude, latitude }: { longitude: number, latitude: number }) => {
-        mapRef.current?.flyTo({
-            center: [longitude, latitude],
-            duration: 3000,
-            curve: 1.42
-        });
+    // const onChangeCity = ({ longitude, latitude }: { longitude: number, latitude: number }) => {
+    //     mapRef.current?.flyTo({
+    //         center: [longitude, latitude],
+    //         duration: 3000,
+    //         curve: 1.42
+    //     });
 
-        setIsChangingCity(true);
+    //     setIsChangingCity(true);
 
-        setTimeout(() => {
-            setIsChangingCity(false); 
-        }, 3500);
-    }
+    //     setTimeout(() => {
+    //         setIsChangingCity(false); 
+    //     }, 3500);
+    // }
 
     useEffect(() => { 
         if (!sectionRef.current || !cardRef.current) return;
