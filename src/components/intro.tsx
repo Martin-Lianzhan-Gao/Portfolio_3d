@@ -4,7 +4,7 @@ import { MapRef } from "@vis.gl/react-maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import CitySwitcher from "./city-switcher";
+// import CitySwitcher from "./city-switcher";
 
 
 const Intro = () => {
