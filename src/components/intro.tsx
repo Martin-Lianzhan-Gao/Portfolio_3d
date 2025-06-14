@@ -4,7 +4,7 @@ import { MapRef } from "@vis.gl/react-maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-// import CitySwitcher from "./city-switcher";
+import CitySwitcher from "./city-switcher";
 
 
 const Intro = () => {
@@ -17,21 +17,21 @@ const Intro = () => {
 
     const [isChangingCity, setIsChangingCity] = useState(false);
 
-    // const [isCurrentLocation, setIsCurrentLocation] = useState(true);
+    const [isCurrentLocation, setIsCurrentLocation] = useState(true);
 
-    // const onChangeCity = ({ longitude, latitude }: { longitude: number, latitude: number }) => {
-    //     mapRef.current?.flyTo({
-    //         center: [longitude, latitude],
-    //         duration: 3000,
-    //         curve: 1.42
-    //     });
+    const onChangeCity = ({ longitude, latitude }: { longitude: number, latitude: number }) => {
+        mapRef.current?.flyTo({
+            center: [longitude, latitude],
+            duration: 3000,
+            curve: 1.42
+        });
 
-    //     setIsChangingCity(true);
+        setIsChangingCity(true);
 
-    //     setTimeout(() => {
-    //         setIsChangingCity(false); 
-    //     }, 3500);
-    // }
+        setTimeout(() => {
+            setIsChangingCity(false); 
+        }, 3500);
+    }
 
     useEffect(() => { 
         if (!sectionRef.current || !cardRef.current) return;
@@ -73,7 +73,7 @@ const Intro = () => {
 
     return (
         <div
-            className="relative w-full h-screen min-h-screen max-h-[200vh] font-roboto-mono text-gray-200 flex flex-col"
+            className="relative w-full h-[100dvh] min-h-screen max-h-[200vh] font-roboto-mono text-gray-200 flex flex-col"
             ref={sectionRef}
         >
             <div className="w-full h-full">
@@ -105,11 +105,11 @@ const Intro = () => {
                         >
                             A motivated and results-driven Computer Science graduate with over a year of hands-on experience in full-stack development and cloud development. And also a fast learner with a practical and exploratory spirit.
                         </motion.p>
-                        {/* <CitySwitcher 
+                        <CitySwitcher 
                             onSelectCity={onChangeCity}
                             isCurrentLocation={isCurrentLocation}
                             setIsCurrentLocation={setIsCurrentLocation} 
-                        /> */}
+                        />
                     </motion.div>}
                 </AnimatePresence>
             </div>
