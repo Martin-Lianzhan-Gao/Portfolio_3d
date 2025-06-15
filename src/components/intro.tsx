@@ -5,8 +5,8 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import CitySwitcher from "./city-switcher";
-
-
+import { useAtom } from "jotai";
+import { isTransitioningAtom } from "@/atoms/atoms-store";
 
 const Intro = () => {
 
@@ -16,7 +16,7 @@ const Intro = () => {
 
     const sectionRef = useRef<HTMLDivElement>(null);
 
-    const [isChangingCity, setIsChangingCity] = useState(false);
+    const [isTransitioning, setIsTransitioning] = useAtom(isTransitioningAtom);
 
     const [isCurrentLocation, setIsCurrentLocation] = useState(true);
 
@@ -27,10 +27,10 @@ const Intro = () => {
             curve: 1.42
         });
 
-        setIsChangingCity(true);
+        setIsTransitioning(true);
 
         setTimeout(() => {
-            setIsChangingCity(false); 
+            setIsTransitioning(false);
         }, 3500);
     }
 
@@ -82,7 +82,7 @@ const Intro = () => {
             </div>
             <div className="absolute top-0 bottom-0 left-0 right-0 w-full h-auto flex flex-col justify-end items-center border border-white/20 z-2 md:w-1/2 md:justify-center">
                 <AnimatePresence>
-                    {!isChangingCity && <motion.div
+                    {!isTransitioning && <motion.div
                         className="backdrop-blur-xl border bg-black-800/30 border-white/20 rounded-3xl p-4 ml-4 mr-4  h-auto w-auto mb-30 md:ml-10 md:mr-10 md:max-w-[728px] md:mb-0"
                         variants={containerVariants}
                         initial="initial"
