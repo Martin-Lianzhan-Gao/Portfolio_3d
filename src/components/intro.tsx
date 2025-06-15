@@ -7,6 +7,7 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 import CitySwitcher from "./city-switcher";
 
 
+
 const Intro = () => {
 
     const mapRef = useRef<MapRef>(null);
