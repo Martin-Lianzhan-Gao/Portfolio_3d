@@ -62,7 +62,7 @@ const Intro = () => {
         const screenWidth = window.innerWidth;
 
         if (isMobile) {
-            const paddingBottom = screenHeight * 0.25;
+            const paddingBottom = screenHeight * 0.25 + 20;
             mapRef.current?.flyTo({
                 center: [currentCity.longitude, currentCity.latitude],
                 duration: 3000,
