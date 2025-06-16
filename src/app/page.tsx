@@ -26,7 +26,7 @@ export default function Home() {
                         exit={{ y: 100, opacity: 0 }}
                         transition={{ duration: 0.8, ease: "easeInOut" }}
                     >
-                        <NavigationButton text="Next" isLastPart={false} />
+                        <NavigationButton text="Explore" isLastPart={false} />
                     </motion.div>
                 )}
             </AnimatePresence>
