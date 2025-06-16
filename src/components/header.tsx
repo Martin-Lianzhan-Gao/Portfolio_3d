@@ -2,8 +2,8 @@
 import { Menu, X } from "lucide-react";
 import { useState, useEffect, Dispatch, SetStateAction} from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import useIsMobile from "@/hooks/useIsMobile";
-import useScrollDirection from "@/hooks/useScrollDirection";
+import useIsMobile from "@/hooks/use-is-mobile";
+import useScrollDirection from "@/hooks/use-scroll-direction";
 import { cn } from "@/utils/cn";
 
 const AnimateListItem = ({ text, index, isSelected, textSetter }: { text: string, index: number, isSelected: boolean, textSetter: Dispatch<SetStateAction<string>> }) => {
