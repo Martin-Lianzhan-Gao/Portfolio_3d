@@ -5,8 +5,9 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import CitySwitcher from "./city-switcher";
-import { useAtom } from "jotai";
-import { isTransitioningAtom } from "@/atoms/atoms-store";
+import { useAtom, useAtomValue } from "jotai";
+import { isTransitioningAtom, currentCityAtom } from "@/atoms/atoms-store";
+import useIsMobile from "@/hooks/use-is-mobile";
 
 const Intro = () => {
 
@@ -19,6 +20,12 @@ const Intro = () => {
     const [isTransitioning, setIsTransitioning] = useAtom(isTransitioningAtom);
 
     const [isCurrentLocation, setIsCurrentLocation] = useState(true);
+
+    const currentCity = useAtomValue(currentCityAtom);
+
+    const isMobile = useIsMobile();
+
+    const [mapLoaded, setMapLoaded] = useState(false);
 
     const onChangeCity = ({ longitude, latitude }: { longitude: number, latitude: number }) => {
         mapRef.current?.flyTo({
@@ -34,7 +41,7 @@ const Intro = () => {
         }, 3500);
     }
 
-    useEffect(() => { 
+    const resizeSection = () => {
         if (!sectionRef.current || !cardRef.current) return;
 
         const sectionHeight = sectionRef.current.offsetHeight;
@@ -43,7 +50,46 @@ const Intro = () => {
         if (cardHeight > sectionHeight) {
             sectionRef.current.style.height = `${cardHeight + 200}px`;
         }
-    }, [])
+    }
+
+    useEffect(() => {
+
+        // resize the section when the size of scene changes
+        resizeSection();
+
+        // change the map padding based on the screen type
+        const screenHeight = window.innerHeight;
+        const screenWidth = window.innerWidth;
+
+        if (isMobile) {
+            const paddingBottom = screenHeight * 0.25;
+            mapRef.current?.flyTo({
+                center: [currentCity.longitude, currentCity.latitude],
+                duration: 3000,
+                curve: 1.42,
+                padding: {
+                    bottom: paddingBottom,
+                    left: 0,
+                    right: 0,
+                    top: 0
+                }
+            });
+        } else {
+            const paddingLeft = screenWidth * 0.25;
+            mapRef.current?.flyTo({
+                center: [currentCity.longitude, currentCity.latitude],
+                duration: 3000,
+                curve: 1.42,
+                padding: {
+                    left: paddingLeft,
+                    bottom: 0,
+                    right: 0,
+                    top: 0
+                }
+            });
+        }
+
+    }, [isMobile, currentCity, mapLoaded]);
 
     // define the animations for the container
     const containerVariants: Variants = {
@@ -78,7 +124,7 @@ const Intro = () => {
             ref={sectionRef}
         >
             <div className="w-full h-full">
-                <WorldMap ref={mapRef} />
+                <WorldMap ref={mapRef} setMapLoaded={setMapLoaded} />
             </div>
             <div className="absolute top-0 bottom-0 left-0 right-0 w-full h-auto flex flex-col justify-end items-center border border-white/20 z-2 md:w-1/2 md:justify-center">
                 <AnimatePresence>
@@ -106,10 +152,10 @@ const Intro = () => {
                         >
                             A motivated and results-driven Computer Science graduate with over a year of hands-on experience in full-stack development and cloud development. And also a fast learner with a practical and exploratory spirit.
                         </motion.p>
-                        <CitySwitcher 
+                        <CitySwitcher
                             onSelectCity={onChangeCity}
                             isCurrentLocation={isCurrentLocation}
-                            setIsCurrentLocation={setIsCurrentLocation} 
+                            setIsCurrentLocation={setIsCurrentLocation}
                         />
                     </motion.div>}
                 </AnimatePresence>

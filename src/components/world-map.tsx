@@ -3,7 +3,7 @@ import { Map, Marker, MapRef } from "@vis.gl/react-maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { MapPin } from "lucide-react";
 import { motion } from "framer-motion";
-import { forwardRef, memo } from "react";
+import { Dispatch, forwardRef, memo, SetStateAction } from "react";
 import { brisbane, zhengzhou } from "@/data/cities";
 
 const DynamicMapPin = () => {
@@ -23,7 +23,7 @@ const DynamicMapPin = () => {
     )
 }
 
-const WorldMap = forwardRef<MapRef, object>(({}, ref) => {
+const WorldMap = forwardRef<MapRef, { setMapLoaded: Dispatch<SetStateAction<boolean>> }>(({ setMapLoaded }, ref) => {
 
     const viewState = {
         latitude: brisbane.latitude,
@@ -51,9 +51,11 @@ const WorldMap = forwardRef<MapRef, object>(({}, ref) => {
     return (
 
         <Map
+            onLoad={() => {
+                setMapLoaded(true);
+            }}
             ref={ref}
             attributionControl={false}
-            padding={{ top: 550 }}
             style={{ width: '100%', height: '100%' }}
             initialViewState={viewState}
             {...mapControl}
