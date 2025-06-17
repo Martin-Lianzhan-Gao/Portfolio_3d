@@ -28,9 +28,9 @@ const WorldMap = forwardRef<MapRef, { setMapLoaded: Dispatch<SetStateAction<bool
     const viewState = {
         latitude: brisbane.latitude,
         longitude: brisbane.longitude,
-        zoom: 11,
+        zoom: 12,
         bearing: 0,
-        pitch: 50
+        pitch: 60
     }
 
     const mapControl = {
@@ -60,6 +60,7 @@ const WorldMap = forwardRef<MapRef, { setMapLoaded: Dispatch<SetStateAction<bool
             initialViewState={viewState}
             {...mapControl}
             mapStyle="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json"
+            
         >
             <Marker
                 longitude={brisbane.longitude}
