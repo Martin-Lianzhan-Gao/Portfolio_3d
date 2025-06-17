@@ -19,7 +19,7 @@ const CitySwitcher = ({ onSelectCity, isCurrentLocation, setIsCurrentLocation }:
     return (
 
         <motion.div
-            className='mt-4 text-sm text-gray-400 flex flex-row 2xl:text-xl'
+            className='mt-4 text-sm text-gray-400 flex flex-row md:mt-6 2xl:text-xl'
         >
             <motion.div
                 onClick={() => {
@@ -27,9 +27,9 @@ const CitySwitcher = ({ onSelectCity, isCurrentLocation, setIsCurrentLocation }:
                     onSelectCity({ longitude: brisbane.longitude, latitude: brisbane.latitude });
                     setCurrentCity(brisbane);
                 }}
-                className={cn(isCurrentLocation ? "text-gray-200 bg-gray-700/40 border border-white/20" : "cursor-pointer hover:text-gray-200 hover:bg-gray-700/40 active:bg-gray-700/40 active:text-gray-200 ", "px-4 py-2 rounded-2xl  backdrop-blur-2xl mr-1 transition-colors duration-200")}
+                className={cn(isCurrentLocation ? "text-gray-200 bg-gray-700/40 border border-white/20" : "cursor-pointer hover:text-gray-200 hover:bg-gray-700/40 active:bg-gray-700/40 active:text-gray-200 ", "px-4 py-2 rounded-2xl backdrop-blur-2xl mr-1 transition-colors duration-200")}
             >
-                Location
+                Current {isCurrentLocation && (<span>- Brisbane, AU 🇦🇺</span>)}
             </motion.div>
             <motion.div
                 onClick={() => {
@@ -39,7 +39,7 @@ const CitySwitcher = ({ onSelectCity, isCurrentLocation, setIsCurrentLocation }:
                 }}
                 className={cn(!isCurrentLocation ? "text-gray-200 bg-gray-700/40 border border-white/20" : "cursor-pointer hover:text-gray-200 hover:bg-gray-700/40 active:bg-gray-700/40 active:text-gray-200", "px-4 py-2 rounded-2xl backdrop-blur-2xl ml-1 transition-colors duration-200")}
             >
-                Hometown
+                Hometown {!isCurrentLocation && (<span>- Zhengzhou, CN 🇨🇳</span>)}
             </motion.div>
         </motion.div>
 
