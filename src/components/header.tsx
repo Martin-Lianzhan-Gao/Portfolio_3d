@@ -88,7 +88,7 @@ const Header = () => {
 
         }
 
-    }, [isMobile, isOpen]);
+    }, [isMobile, isOpen, handleClickOutside]);
 
     return (
         <div className={cn("fixed z-10 w-full font-roboto-mono flex flex-col items-center", isOpen && isMobile ? "h-screen" : "h-auto")}>
