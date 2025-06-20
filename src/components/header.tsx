@@ -11,7 +11,9 @@ const AnimateListItem = ({ text, isSelected, textSetter }: { text: string, index
     return (
         <motion.div
             className={cn("text-gray-300 hover:text-gray-100 py-6 md:py-0", isSelected ? "text-gray-100" : "text-gray-300", "cursor-pointer ")}
-            onClick={() => textSetter(text)}
+            onClick={() => {
+                textSetter(text);
+            }}
         >
             {text}
             <motion.div className="w-full flex justify-center h-[2px]">
@@ -100,11 +102,17 @@ const Header = () => {
                 {showHeader && (
                     <motion.div
                         ref={menuRef}
-                        className="z-50 border border-white/20 rounded-2xl backdrop-blur-sm w-[calc(100%-16px)] h-1/2 my-4 ml-4 mr-4 flex flex-col justify-center items-center md:flex-row md:justify-around md:h-auto md:w-full md:mr-0 md:ml-0 md:my-0 md:py-4 md:rounded-none md:border-0"
-                        layout
-                        initial={isMobile ? { opacity: 0, y: -100, scale: 0.4 } : {opacity: 0, y: -20}}
-                        animate={isMobile ? { opacity: 1, y: 0, scale: 1 } : { opacity: 1, y: 0 }}
-                        exit={isMobile ? { opacity: 0, y: -100, scale: 0.4 } : { opacity: 0, y: -20 }}
+                        className="z-50  rounded-2xl backdrop-blur-sm w-[calc(100%-16px)] h-[50dvh] my-4 ml-4 mr-4 flex flex-col justify-center items-center md:flex-row md:justify-around md:h-auto md:w-full md:mr-0 md:ml-0 md:my-0 md:py-4 md:rounded-none md:border-0 md:backdrop-blur-sm"
+                        layout='position'
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 100,
+                            damping: 10,
+                            delay: 0.1,
+                        }}
                     >
                         {Array.from({ length: 5 }).map((_, index) => (
                             <AnimateListItem
