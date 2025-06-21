@@ -6,13 +6,22 @@ import useIsMobile from "@/hooks/use-is-mobile";
 import useScrollDirection from "@/hooks/use-scroll-direction";
 import { cn } from "@/utils/cn";
 
-const AnimateListItem = ({ text, isSelected, textSetter }: { text: string, index: number, isSelected: boolean, textSetter: Dispatch<SetStateAction<string>> }) => {
+const AnimateListItem = ({ text, isSelected, textSetter, index }: { text: string, index: number, isSelected: boolean, textSetter: Dispatch<SetStateAction<string>> }) => {
 
     return (
         <motion.div
+            key={index}
             className={cn("text-gray-300 hover:text-gray-100 py-6 md:py-0", isSelected ? "text-gray-100" : "text-gray-300", "cursor-pointer ")}
             onClick={() => {
                 textSetter(text);
+            }}
+            initial={{ opacity: 0, y: -40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -40 }}
+            transition={{
+                type: "spring",
+                stiffness: 100,
+                damping: 10,
             }}
         >
             {text}
@@ -102,7 +111,7 @@ const Header = () => {
                 {showHeader && (
                     <motion.div
                         ref={menuRef}
-                        className="z-50  rounded-2xl backdrop-blur-sm w-[calc(100%-16px)] h-[50dvh] my-4 ml-4 mr-4 flex flex-col justify-center items-center md:flex-row md:justify-around md:h-auto md:w-full md:mr-0 md:ml-0 md:my-0 md:py-4 md:rounded-none md:border-0 md:backdrop-blur-sm"
+                        className="z-50 border border-white/20 rounded-2xl backdrop-blur-sm w-[calc(100%-16px)] h-[50dvh] my-4 ml-4 mr-4 flex flex-col justify-center items-center md:flex-row md:justify-around md:h-auto md:w-full md:mr-0 md:ml-0 md:my-0 md:py-4 md:rounded-none md:border-0 md:backdrop-blur-sm"
                         layout='position'
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -111,7 +120,6 @@ const Header = () => {
                             type: "spring",
                             stiffness: 100,
                             damping: 10,
-                            delay: 0.1,
                         }}
                     >
                         {Array.from({ length: 5 }).map((_, index) => (
