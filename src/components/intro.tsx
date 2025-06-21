@@ -3,11 +3,12 @@ import WorldMap from "./world-map";
 import { MapRef } from "@vis.gl/react-maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence, Variants } from "framer-motion";
+import { motion, AnimatePresence} from "framer-motion";
 import CitySwitcher from "./city-switcher";
 import { useAtom, useAtomValue } from "jotai";
 import { isTransitioningAtom, currentCityAtom } from "@/atoms/atoms-store";
 import useIsMobile from "@/hooks/use-is-mobile";
+import { introCardContainerVariants, introCardItemVariants } from "@/data/animations/joint-animations";
 
 const Intro = () => {
 
@@ -91,62 +92,6 @@ const Intro = () => {
 
     }, [isMobile, currentCity, mapLoaded]);
 
-    const itemVariants: Variants = {
-        initial: { x: -100, opacity: 0 },
-        animate: { 
-            x: 0,
-            opacity: 1,
-            transition: {
-                type: "spring",
-                stiffness: 100,
-                damping: 20,
-            }
-        },
-        exit: {
-            x: -100,
-            opacity: 0,
-            transition: {
-                type: "spring",
-                stiffness: 70,
-                damping: 20,
-                mass: 0.6,
-            }
-         }
-    }
-
-    // define the animations for the container
-    const containerVariants: Variants = {
-        // initial state
-        initial: {
-            x: -100,
-            opacity: 0,
-        },
-        // enter animation
-        animate: {
-            x: 0,
-            opacity: 1,
-            transition: {
-                type: "spring",
-                stiffness: 70,
-                damping: 20,
-                mass: 0.6,
-                staggerChildren: 0.15, // stagger children animations by 0.15 seconds
-            },
-        },
-        // exit animation
-        exit: {
-            x: -100,
-            opacity: 0,
-            transition: {
-                type: "spring",
-                stiffness: 70,
-                damping: 20,
-                mass: 0.6,
-                staggerChildren: 0.15, // stagger children animations by 0.15 seconds
-            },
-        }
-    }
-
     return (
         <div
             className="relative w-full h-[100dvh] min-h-[100dvh] max-h-[200dvh] font-roboto-mono text-gray-200 flex flex-col"
@@ -159,7 +104,7 @@ const Intro = () => {
                 <AnimatePresence>
                     {!isTransitioning && (<motion.div
                         className="backdrop-blur-sm border bg-black-800/30 border-white/20 rounded-3xl p-4 ml-4 mr-4  h-auto w-auto mb-30 md:ml-10 md:mr-10 md:max-w-[728px] md:mb-0"
-                        variants={containerVariants}
+                        variants={introCardContainerVariants}
                         initial="initial"
                         animate="animate"
                         exit="exit"
@@ -169,24 +114,24 @@ const Intro = () => {
                             <motion.h1
                                 key={1}
                                 className="font-bold text-3xl md:text-4xl 2xl:text-5xl"
-                                variants={itemVariants}
+                                variants={introCardItemVariants}
                             >
                                 HI, I&apos;M LIANZHAN GAO (MARTIN)
                             </motion.h1>
                             <motion.h2
                                 key={2}
                                 className="font-medium mt-1 text-xl md:text-2xl md:mt-2 2xl:text-3xl 2xl:mt-3"
-                                variants={itemVariants}
+                                variants={introCardItemVariants}
                             >
                                 <motion.span
                                     key={3}
-                                    variants={itemVariants}
+                                    variants={introCardItemVariants}
                                 >
                                     - 1/1 Developer 🧑🏻‍💻
                                 </motion.span><br />
                                 <motion.span
                                     key={4}
-                                    variants={itemVariants}
+                                    variants={introCardItemVariants}
                                 >
                                     - 1/2 Designer 🎨
                                 </motion.span>
@@ -194,13 +139,13 @@ const Intro = () => {
                             <motion.p
                                 key={5}
                                 className="mt-2 text-sm md:text-xl md:mt-4 2xl:text-2xl 2xl:mt-5"
-                                variants={itemVariants}
+                                variants={introCardItemVariants}
                             >
                                 A motivated and results-driven Computer Science graduate with over a year of hands-on experience in full-stack development and cloud development. And also a fast learner with a practical and exploratory spirit 🚀.
                             </motion.p>
                             <motion.div
                                 key={6}
-                                variants={itemVariants}
+                                variants={introCardItemVariants}
                             >
                                 <CitySwitcher
                                     onSelectCity={onChangeCity}
