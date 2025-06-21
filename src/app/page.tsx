@@ -24,7 +24,12 @@ export default function Home() {
                         initial={{ y: 100, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: 100, opacity: 0 }}
-                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 110,
+                            damping: 16,
+                            mass: 1.5
+                        }}
                     >
                         <NavigationButton text="Explore" isLastPart={false} />
                     </motion.div>
