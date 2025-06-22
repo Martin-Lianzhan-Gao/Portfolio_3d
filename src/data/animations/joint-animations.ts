@@ -2,7 +2,7 @@ import { Variants } from "framer-motion";
 
 // define the animations for each item in the intro card
 export const introCardItemVariants: Variants = {
-    initial: { x: -100, opacity: 0 },
+    initial: { x: -55, opacity: 0 },
     animate: {
         x: 0,
         opacity: 1,
@@ -36,9 +36,8 @@ export const introCardContainerVariants: Variants = {
         opacity: 1,
         transition: {
             type: "spring",
-            stiffness: 90,
-            damping: 15,
-            mass: 0.6,
+            stiffness: 100,
+            damping: 10,
             staggerChildren: 0.15, // stagger children animations by 0.15 seconds
         },
     },
