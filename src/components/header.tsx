@@ -83,7 +83,7 @@ const Header = () => {
     }, [scrollDirection, isScrolling]);
 
     return (
-        <div className={cn("fixed w-full z-10 font-roboto-mono flex flex-col items-center", isOpen && isMobile ? "h-screen" : "h-auto")}>
+        <div className={cn("fixed w-full z-50 font-roboto-mono flex flex-col items-center", isOpen && isMobile ? "h-screen" : "h-auto")}>
             <div className="py-2 backdrop-blur-sm w-full md:hidden">
                 <button
                     className=" ml-4 flex flex-row px-3 py-2 text-gray-100 md:hidden"
@@ -111,7 +111,7 @@ const Header = () => {
                 {showHeader && (
                     <motion.div
                         ref={menuRef}
-                        className="z-50 border border-white/20 rounded-2xl backdrop-blur-sm w-[calc(100%-16px)] h-[50dvh] my-4 ml-4 mr-4 flex flex-col justify-center items-center md:flex-row md:justify-around md:h-auto md:w-full md:mr-0 md:ml-0 md:my-0 md:py-4 md:rounded-none md:border-0 md:backdrop-blur-sm"
+                        className="z-60 border border-white/20 rounded-2xl backdrop-blur-sm w-[calc(100%-16px)] h-[50dvh] my-4 ml-4 mr-4 flex flex-col justify-center items-center md:flex-row md:justify-around md:h-auto md:w-full md:mr-0 md:ml-0 md:my-0 md:py-4 md:rounded-none md:border-0 md:backdrop-blur-sm"
                         layout='position'
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}

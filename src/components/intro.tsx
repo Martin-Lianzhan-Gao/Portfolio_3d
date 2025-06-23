@@ -20,14 +20,13 @@ const Intro = () => {
 
     const [isTransitioning, setIsTransitioning] = useAtom(isTransitioningAtom);
 
-    const [isCurrentLocation, setIsCurrentLocation] = useState(true);
-
     const currentCity = useAtomValue(currentCityAtom);
 
     const isMobile = useIsMobile();
 
     const [mapLoaded, setMapLoaded] = useState(false);
 
+    // Change the city on the map when the user selects a different city
     const onChangeCity = ({ longitude, latitude }: { longitude: number, latitude: number }) => {
         mapRef.current?.flyTo({
             center: [longitude, latitude],
@@ -36,12 +35,13 @@ const Intro = () => {
         });
 
         setIsTransitioning(true);
-
+        
         setTimeout(() => {
             setIsTransitioning(false);
         }, 3500);
     }
 
+    // Resize the section based on the size of the card
     const resizeSection = () => {
         if (!sectionRef.current || !cardRef.current) return;
 
@@ -53,6 +53,7 @@ const Intro = () => {
         }
     }
 
+    // Monitor the size of the screen and resize the section when necessary
     useEffect(() => {
 
         // resize the section when the size of scene changes
@@ -149,8 +150,6 @@ const Intro = () => {
                             >
                                 <CitySwitcher
                                     onSelectCity={onChangeCity}
-                                    isCurrentLocation={isCurrentLocation}
-                                    setIsCurrentLocation={setIsCurrentLocation}
                                 />
                             </motion.div>
                         </AnimatePresence>

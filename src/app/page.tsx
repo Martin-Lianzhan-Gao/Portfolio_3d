@@ -4,8 +4,10 @@ import NavigationButton from "@/components/navigation-button";
 import { useAtomValue } from "jotai";
 import { isTransitioningAtom } from "@/atoms/atoms-store";
 import { motion, AnimatePresence } from "framer-motion";
+import AlertCard from "@/components/alert-card";
 
 export default function Home() {
+
     const isTransitioning = useAtomValue(isTransitioningAtom);
 
     return (
@@ -20,7 +22,7 @@ export default function Home() {
             <AnimatePresence>
                 {!isTransitioning && (
                     <motion.div
-                        className="flex w-full flex-row justify-center fixed z-12 bottom-8 text-black"
+                        className="flex w-full flex-row justify-center fixed z-12 bottom-8 "
                         initial={{ y: 100, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: 100, opacity: 0 }}
@@ -35,6 +37,11 @@ export default function Home() {
                     </motion.div>
                 )}
             </AnimatePresence>
+            <motion.div
+                className="fixed z-12 top-18 w-full flex justify-center h-auto md:justify-end"
+            >
+                <AlertCard />
+            </motion.div>)
         </div>
     );
 }
