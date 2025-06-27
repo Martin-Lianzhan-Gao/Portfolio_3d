@@ -104,7 +104,7 @@ const Intro = () => {
             <div className="absolute top-0 bottom-0 left-0 right-0 w-full h-auto flex flex-col justify-end items-center z-2 md:w-1/2 md:justify-center">
                 <AnimatePresence>
                     {!isTransitioning && (<motion.div
-                        className="shadow-sm backdrop-blur-xl border bg-black-800/30 border-white/20 rounded-3xl p-4 ml-4 mr-4  h-auto w-auto mb-20 md:ml-10 md:mr-10 md:max-w-[728px] md:mb-0"
+                        className="shadow-sm backdrop-blur-xl border bg-black-800/30 border-white/20 rounded-3xl p-4 ml-4 mr-4 h-auto w-auto mb-10 md:ml-10 md:mr-10 md:max-w-[728px] md:mb-0"
                         variants={introCardContainerVariants}
                         initial="initial"
                         animate="animate"

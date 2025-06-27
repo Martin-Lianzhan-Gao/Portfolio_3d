@@ -1,10 +1,8 @@
 'use client';
-import { Map, Marker, MapRef } from "@vis.gl/react-maplibre";
+import { Map, MapRef } from "@vis.gl/react-maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { MapPin } from "lucide-react";
-import { motion } from "framer-motion";
 import { Dispatch, forwardRef, memo, SetStateAction } from "react";
-import { brisbane, zhengzhou } from "@/data/cities";
+import { brisbane } from "@/data/cities";
 
 const WorldMap = forwardRef<MapRef, { setMapLoaded: Dispatch<SetStateAction<boolean>> }>(({ setMapLoaded }, ref) => {
 
