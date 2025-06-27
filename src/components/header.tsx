@@ -1,7 +1,6 @@
 'use client'
-import { Menu, X } from "lucide-react";
 import { useState, useEffect, useRef, Dispatch, SetStateAction} from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, SVGMotionProps } from "framer-motion";
 import useIsMobile from "@/hooks/use-is-mobile";
 import useScrollDirection from "@/hooks/use-scroll-direction";
 import { cn } from "@/utils/cn";
@@ -11,7 +10,7 @@ const AnimateListItem = ({ text, isSelected, textSetter, index }: { text: string
     return (
         <motion.div
             key={index}
-            className={cn("text-gray-300 hover:text-gray-100 py-6 md:py-0", isSelected ? "text-gray-100" : "text-gray-300", "cursor-pointer ")}
+            className={cn("text-gray-300 hover:text-neutral-800 py-6 md:py-0", isSelected ? "text-neutal-800" : "text-neutral-500", "cursor-pointer ")}
             onClick={() => {
                 textSetter(text);
             }}
@@ -27,7 +26,7 @@ const AnimateListItem = ({ text, isSelected, textSetter, index }: { text: string
             {text}
             <motion.div className="w-full flex justify-center h-[2px]">
                 {isSelected && (<motion.div
-                    className="w-[12px] h-[2px] rounded-2xl bg-gray-200"
+                    className="w-[12px] h-[2px] rounded-2xl bg-gray-800"
                     initial={{ width: 0, opacity: 0 }}
                     animate={{ width: '12px', opacity: 1 }}
                     exit={{ width: 0, opacity: 0 }}
@@ -41,6 +40,16 @@ const AnimateListItem = ({ text, isSelected, textSetter, index }: { text: string
         </motion.div>
     )
 }
+
+const Path = (props: SVGMotionProps<SVGPathElement>) => (
+    <motion.path
+        fill="transparent"
+        strokeWidth="2"
+        stroke="currentColor"
+        strokeLinecap="round"
+        {...props}
+    />
+  )
 
 const Header = () => {
     // get screen type
@@ -83,10 +92,10 @@ const Header = () => {
     }, [scrollDirection, isScrolling]);
 
     return (
-        <div className={cn("fixed w-full z-50 font-roboto-mono flex flex-col items-center", isOpen && isMobile ? "h-screen" : "h-auto")}>
-            <div className="py-2 backdrop-blur-sm w-full md:hidden">
+        <div className={cn("font-roboto-mono text-black font-medium fixed w-full z-50 flex flex-col items-center", isOpen && isMobile ? "h-screen" : "h-auto")}>
+            <div className="py-2 w-full md:hidden">
                 <button
-                    className=" ml-4 flex flex-row px-3 py-2 text-gray-100 md:hidden"
+                    className="shadow-sm ml-4 flex flex-row px-3 py-3 rounded-3xl backdrop-blur-xl md:hidden"
                     onClick={() => {
                         if (isOpen === false) {
                             setIsOpen(true);
@@ -94,11 +103,39 @@ const Header = () => {
                             setIsOpen(false);
                         }
                     }}>
-                    {isOpen ? <X /> : <Menu />}
-                    Menu
+                    <motion.svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        initial={false}
+                        animate={isOpen ? 'open' : 'closed'}
+                    >
+                        <Path
+                            variants={{
+                                closed: { d: 'M 3 6 L 21 6' },
+                                open: { d: 'M 4.5 4.5 L 19.5 19.5' },
+                            }}
+                            transition={{ duration: 0.3 }}
+                        />
+                        <Path
+                            variants={{
+                                closed: { d: 'M 3 12 L 21 12', opacity: 1 },
+                                open: { opacity: 0 },
+                            }}
+                            transition={{ duration: 0.3 }}
+                        />
+                        <Path
+                            variants={{
+                                closed: { d: 'M 3 18 L 21 18' },
+                                open: { d: 'M 4.5 19.5 L 19.5 4.5' },
+                            }}
+                            transition={{ duration: 0.3 }}
+                        />
+                    </motion.svg>
                 </button>
             </div>
             { 
+                // layer
                 isMobile && isOpen && (
                     <div
                         className="fixed top-0 left-0 right-0 bottom-0 z-20"
@@ -111,7 +148,7 @@ const Header = () => {
                 {showHeader && (
                     <motion.div
                         ref={menuRef}
-                        className="z-60 border border-white/20 rounded-2xl backdrop-blur-sm w-[calc(100%-16px)] h-[50dvh] my-4 ml-4 mr-4 flex flex-col justify-center items-center md:flex-row md:justify-around md:h-auto md:w-full md:mr-0 md:ml-0 md:my-0 md:py-4 md:rounded-none md:border-0 md:backdrop-blur-sm"
+                        className="z-60 border shadow-sm rounded-3xl backdrop-blur-xl w-[calc(100%-32px)] h-[50dvh] my-4 ml-4 mr-4 flex flex-col justify-center items-center md:flex-row md:justify-around md:h-auto md:w-full md:mr-0 md:ml-0 md:my-0 md:py-4 md:rounded-none md:border-0 md:backdrop-blur-xl md:shadow-none"
                         layout='position'
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}

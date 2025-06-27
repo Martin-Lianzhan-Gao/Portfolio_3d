@@ -22,7 +22,7 @@ const AlertCard = () => {
                     damping: 15,
                     mass: 1
                 }}
-                className="text-gray-200 font-roboto-mono flex flex-col w-[calc(100%-16px)] ml-4 mr-4 border border-white/20 rounded-2xl backdrop-blur-sm md:w-auto md:max-w-[calc(50%-16px)]">
+                className="text-gray-200 flex flex-col w-[calc(100%-16px)] ml-4 mr-4 border border-white/20 rounded-2xl backdrop-blur-sm md:w-auto md:max-w-[calc(50%-16px)]">
                 <div className="w-full flex justify-end ">
                     <button
                         className="mt-4 mr-4 p-1 rounded-2xl hover:bg-gray-400/40 active:bg-gray-400/40"

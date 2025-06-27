@@ -21,7 +21,7 @@ const CitySwitcher = ({ onSelectCity}: CitySwitcherProps) => {
     return (
 
         <motion.div
-            className='mt-4 text-sm text-gray-400 flex flex-row md:mt-6 2xl:text-xl'
+            className='mt-4 text-sm flex flex-row md:mt-6 2xl:text-xl'
         >
             <motion.div
                 onClick={() => {

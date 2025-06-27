@@ -11,7 +11,7 @@ export default function Home() {
     const isTransitioning = useAtomValue(isTransitioningAtom);
 
     return (
-        <div className="overflow-x-hidden">
+        <div className="overflow-x-hidden font-roboto-mono">
             <Intro />
             <div className="flex w-full h-screen flex-col items-center justify-center p-24">
                 First Page
@@ -19,7 +19,7 @@ export default function Home() {
             <div className="flex h-screen flex-col items-center justify-center p-24">
                 Second Page
             </div>
-            <AnimatePresence>
+            {/* <AnimatePresence>
                 {!isTransitioning && (
                     <motion.div
                         className="flex w-full flex-row justify-center fixed z-12 bottom-8 "
@@ -36,7 +36,7 @@ export default function Home() {
                         <NavigationButton text="Explore" isLastPart={false} />
                     </motion.div>
                 )}
-            </AnimatePresence>
+            </AnimatePresence> */}
             <motion.div
                 className="fixed z-12 top-18 w-full flex justify-center h-auto md:justify-end"
             >

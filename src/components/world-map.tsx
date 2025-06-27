@@ -6,23 +6,6 @@ import { motion } from "framer-motion";
 import { Dispatch, forwardRef, memo, SetStateAction } from "react";
 import { brisbane, zhengzhou } from "@/data/cities";
 
-const DynamicMapPin = () => {
-    return (
-        <motion.div
-            animate={{ y: [0, -15, 0] }}
-            transition={{
-                duration: 1.5,
-                ease: "easeInOut",
-                repeat: Infinity,
-                repeatType: "loop",
-                repeatDelay: 0.1
-            }}
-        >
-            <MapPin className="mb-4" fill="#DB3739" size={24} />
-        </motion.div>
-    )
-}
-
 const WorldMap = forwardRef<MapRef, { setMapLoaded: Dispatch<SetStateAction<boolean>> }>(({ setMapLoaded }, ref) => {
 
     const viewState = {
@@ -59,23 +42,10 @@ const WorldMap = forwardRef<MapRef, { setMapLoaded: Dispatch<SetStateAction<bool
             style={{ width: '100%', height: '100%' }}
             initialViewState={viewState}
             {...mapControl}
-            mapStyle="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json"
+            mapStyle="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json"
+            
             
         >
-            <Marker
-                longitude={brisbane.longitude}
-                latitude={brisbane.latitude}
-                anchor="bottom"
-            >
-                <DynamicMapPin />
-            </Marker>
-            <Marker
-                longitude={zhengzhou.longitude}
-                latitude={zhengzhou.latitude}
-                anchor="bottom"
-            >
-                <DynamicMapPin />
-            </Marker>
         </Map>
 
 
