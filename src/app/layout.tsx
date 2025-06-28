@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Roboto_Mono, Lato } from "next/font/google";
+import { Geist, Geist_Mono, Roboto_Mono, Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 
@@ -21,7 +21,7 @@ const robotoMono = Roboto_Mono({
     style: ["normal", "italic"],
 });
 
-const lato = Lato({
+const roboto = Roboto({
     variable: "--font-lato",
     subsets: ["latin"],
     weight: ["400", "700"],
@@ -42,7 +42,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${geistSans.variable} ${geistMono.variable} ${robotoMono.variable} ${lato.variable} antialiased`}
+                className={`${geistSans.variable} ${geistMono.variable} ${robotoMono.variable} ${roboto.variable} antialiased`}
             >
                 <Header />
                 {children}

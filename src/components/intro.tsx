@@ -104,7 +104,7 @@ const Intro = () => {
             <div className="absolute top-0 bottom-0 left-0 right-0 w-full h-auto flex flex-col justify-end items-center z-2 md:w-1/2 md:justify-center">
                 <AnimatePresence>
                     {!isTransitioning && (<motion.div
-                        className="shadow-sm backdrop-blur-xl border bg-black-800/30 border-white/20 rounded-3xl p-4 ml-4 mr-4 h-auto w-auto mb-5 md:ml-10 md:mr-10 md:max-w-[728px] md:mb-0"
+                        className="shadow-sm backdrop-blur-xl border bg-black-800/30 border-white/20 rounded-3xl p-4 ml-4 mr-4 h-auto w-auto mb-5 md:ml-10 md:mr-10 md:mb-0 lg:max-w-[528px] "
                         variants={introCardContainerVariants}
                         initial="initial"
                         animate="animate"
@@ -139,7 +139,7 @@ const Intro = () => {
                             </motion.h2>
                             <motion.p
                                 key={5}
-                                className="my-4 text-xl text-neutral-700 md:text-xl md:mt-4 2xl:text-2xl 2xl:mt-5"
+                                className="my-5 text-xl text-neutral-600 2xl:text-2xl"
                                 variants={introCardItemVariants}
                             >
                                 A motivated and results-driven Computer Science graduate with over a year of hands-on experience in full-stack development. And also a fast learner with a practical and exploratory spirit 🚀.
@@ -149,11 +149,11 @@ const Intro = () => {
                                 key={6}
                                 variants={introCardItemVariants}
                             >
-                                <button className="bg-black text-gray-200 mt-4 py-2 px-4 rounded-3xl font-bold flex flex-row items-center hover:bg-neutral-800 active:bg-neutral-800 transition-colors duration-200">
+                                <button className="bg-black text-gray-200 mt-4 py-2 px-4 rounded-3xl font-bold flex flex-row items-center text-md hover:bg-neutral-800 active:bg-neutral-800 transition-colors duration-200">
                                     <span className="mr-2">
                                         About Me
                                     </span>
-                                    <MoveRight size={16} />
+                                    <MoveRight size={16} strokeWidth={3} />
                                 </button>
                             </motion.div>
                         </AnimatePresence>

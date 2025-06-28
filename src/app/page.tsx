@@ -11,7 +11,7 @@ export default function Home() {
     const isTransitioning = useAtomValue(isTransitioningAtom);
 
     return (
-        <div className="overflow-x-hidden font-roboto-mono">
+        <div className="overflow-x-hidden font-roboto">
             <Intro />
             <div className="flex w-full h-screen flex-col items-center justify-center p-24">
                 First Page

@@ -92,7 +92,7 @@ const Header = () => {
     }, [scrollDirection, isScrolling]);
 
     return (
-        <div className={cn("font-roboto-mono text-black font-medium fixed w-full z-50 flex flex-col items-center", isOpen && isMobile ? "h-screen" : "h-auto")}>
+        <div className={cn("font-roboto text-black font-medium fixed w-full z-50 flex flex-col items-center", isOpen && isMobile ? "h-screen" : "h-auto")}>
             <div className="py-2 w-full md:hidden">
                 <button
                     className="shadow-sm ml-4 flex flex-row px-3 py-3 rounded-3xl backdrop-blur-xl md:hidden"
