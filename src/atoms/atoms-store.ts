@@ -15,3 +15,6 @@ export const isCurrentCitySelectedAtom = atom(false);
 
 // track whether the alert card is currently visible or not.
 export const isAlertCardVisibleAtom = atom(false);
+
+// track info-card zoom-in and zoom-out
+export const isInfoCardZoomedAtom = atom(false);
