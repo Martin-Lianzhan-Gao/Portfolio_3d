@@ -8,7 +8,7 @@ export const introCardItemVariants: Variants = {
         opacity: 1,
         transition: {
             type: "spring",
-            stiffness: 100,
+            stiffness: 120,
             damping: 10,
         }
     },
@@ -23,6 +23,7 @@ export const introCardItemVariants: Variants = {
     }
 }
 
+
 // define the animations for the container of the intro card
 export const introCardContainerVariants: Variants = {
     // initial state
@@ -36,9 +37,9 @@ export const introCardContainerVariants: Variants = {
         opacity: 1,
         transition: {
             type: "spring",
-            stiffness: 100,
+            stiffness: 120,
             damping: 10,
-            staggerChildren: 0.15, // stagger children animations by 0.15 seconds
+            staggerChildren: 0.2, // stagger children animations by 0.15 seconds
         },
     },
     // exit animation
@@ -47,10 +48,9 @@ export const introCardContainerVariants: Variants = {
         opacity: 0,
         transition: {
             type: "spring",
-            stiffness: 90,
-            damping: 15,
-            mass: 0.6,
-            staggerChildren: 0.1, // stagger children animations by 0.1 seconds
+            stiffness: 120,
+            damping: 10,
+            staggerChildren: 0.2, // stagger children animations by 0.1 seconds
         },
     }
 }

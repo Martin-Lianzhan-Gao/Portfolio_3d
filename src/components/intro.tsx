@@ -116,7 +116,16 @@ const Intro = () => {
                         initial="initial"
                         animate="animate"
                         exit="exit"
+                        transition={{
+                            layout: {
+                                type: "spring",
+                                stiffness: 100,
+                                damping: 10,
+                                mass: 1
+                            }
+                          }}
                         ref={cardRef}
+                        layout
                     >
                         <AnimatePresence>
                             <motion.div
@@ -152,7 +161,7 @@ const Intro = () => {
                                     key={3}
                                     variants={introCardItemVariants}
                                 >
-                                    - 1/1 Developer 🧑🏻‍💻
+                                    - 1/1 Web Developer 🧑🏻‍💻
                                 </motion.span><br />
                                 <motion.span
                                     key={4}
